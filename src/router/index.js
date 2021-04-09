@@ -1,11 +1,31 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from '../views/Home.vue'
+import Technology from '@/components/Technology'
+import Index from '@/components/Index'
+import Paper from '@/components/Paper'
 
 const routes = [
   {
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/Technology',
+    name: 'Technology',
+    component: Technology,
+    children: [
+      {
+        path: '/paper/:id',
+        name: 'paper',
+        component: Paper
+      }
+    ]
+  },
+  {
+    path: '/Index',
+    name: 'Index',
+    component: Index
   },
   {
     path: '/about',
@@ -18,6 +38,7 @@ const routes = [
 ]
 
 const router = createRouter({
+  mode: history,
   history: createWebHashHistory(),
   routes
 })
